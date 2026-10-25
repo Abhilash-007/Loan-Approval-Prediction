@@ -26,12 +26,15 @@ st.set_page_config(page_title="Loan Approval Prediction", page_icon="🏦", layo
 
 @st.cache_resource
 def get_model():
-    """Load the saved model. If it cannot be loaded (for example the online server
-    has a different scikit-learn version), train a fresh one from the cleaned data."""
+    """Load the saved model and TEST it on a few rows. If loading or testing fails (for
+    example the online server has a different scikit-learn version than the one that
+    saved the file), train a fresh model from the cleaned data instead."""
+    df = pd.read_csv(DATA_PATH)
     try:
-        return joblib.load(MODEL_PATH)
+        saved = joblib.load(MODEL_PATH)
+        saved.predict_proba(df[MODEL_FEATURES].head(5))   # smoke test: raises if incompatible
+        return saved
     except Exception:
-        df = pd.read_csv(DATA_PATH)
         prep = ColumnTransformer([
             ("num", Pipeline([("impute", SimpleImputer(strategy="median")),
                               ("scale", StandardScaler())]), NUMERIC_FEATURES),

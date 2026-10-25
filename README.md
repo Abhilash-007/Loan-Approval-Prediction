@@ -136,3 +136,9 @@ that no model can predict, and the synthetic data includes that noise.
 ## Ideas to extend the project
 
 Hyperparameter tuning with `GridSearchCV`, SHAP explanations, deploying the model online.
+
+
+## Streamlit app link 
+
+https://loan-approval-prediction-fmsqyagmhajqn9eykqwewh.streamlit.app/
+

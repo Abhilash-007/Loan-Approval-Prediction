@@ -79,9 +79,6 @@ in Jupyter Notebook or VS Code and choose *Run All*.
 ```bash
 streamlit run app.py
 ```
-Opens at http://localhost:8501 with a prediction form and a page of charts. To get a public
-link, deploy it free on Streamlit Community Cloud (push this folder to GitHub, then choose
-`app.py` as the main file).
 
 ## What the pipeline does
 
